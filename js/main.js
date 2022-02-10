@@ -73,11 +73,30 @@ const app = new Vue (
 
 
 
+            },
+
+            autoSlider(){
+
+                this.active++;
+                if(this.active<0){
+                    this.active = this.items.length -1;
+                } else if (this.active == this.items.length){
+                    this.active = 0;
+                }
+
             }
 
+            
 
 
-        }
+
+        },
+
+        created(){
+            const clock = setInterval(() => {
+                this.autoSlider();
+            }, 3000);
+        },
 
 
     }
