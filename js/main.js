@@ -46,7 +46,34 @@ const app = new Vue (
 
         methods: {
 
+            //Funzioni per incremento e decremento active
+            previousPic(){
 
+                this.active--;
+
+                // settiamo il ciclo infinito delle imgs
+                if(this.active < 0){
+
+                    this.active = this.items.length -1;
+
+                }
+
+
+            },
+
+            nextPic(){
+
+                this.active++;
+
+                // settiamo il ciclo infinito delle imgs
+                if(this.active == this.items.length){
+                    this.active = 0;
+                }
+
+
+
+
+            }
 
 
 

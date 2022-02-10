@@ -19,6 +19,14 @@
                 </div>
             </div> 
             -->
+
+            <div class=" item active">
+                <img :src="items[active].url">
+                <div class="text">
+                    <h3>{{items[active].name}}</h3>
+                    <p>{{items[active].text}}</p>
+                </div>
+            </div>
         </div>
         <div class="thumbs">
             <!-- 
@@ -26,8 +34,8 @@
                 <img src="./img/01.jpg" alt="">
             </div> 
             -->
-            <div class="prev"></div>
-            <div class="next"></div>
+            <div class="prev" @click="previousPic()"></div>
+            <div class="next" @click="nextPic()"></div>
         </div>
    </div>
 
