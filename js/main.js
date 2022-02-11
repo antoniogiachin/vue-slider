@@ -7,6 +7,9 @@ const app = new Vue (
 
         data: {
 
+            // clock autoplay
+            clock : null,
+            
             //Array di oggetti con foto e testo
             items : [
                 {
@@ -38,10 +41,6 @@ const app = new Vue (
 
             active: 0,
 
-
-
-
-
         },
 
         methods: {
@@ -58,7 +57,6 @@ const app = new Vue (
 
                 }
 
-
             },
 
             nextPic(){
@@ -70,32 +68,36 @@ const app = new Vue (
                     this.active = 0;
                 }
 
+            },
 
+            // Funzione per bonus 1 (mostra l'immagine corrispondente al click);
+            goToSlide(indice){
 
+                this.active = indice;
 
             },
 
-            autoSlider(){
+            // Autoplay
+            autoPlay(){
 
-                this.active++;
-                if(this.active<0){
-                    this.active = this.items.length -1;
-                } else if (this.active == this.items.length){
-                    this.active = 0;
-                }
+                this.clock = setInterval(() =>{
+                    this.nextPic()
+                }, 3000);
+            },
 
+            // Definisco una variabile clock null sopra
+            stopPlay(){
+                clearInterval(this.clock)
             }
-
-            
-
-
 
         },
 
-        created(){
-            const clock = setInterval(() => {
-                this.autoSlider();
-            }, 3000);
+        // Inseriamo delle istruzioni per quando Vue e' nella fase di mounted
+        mounted(){
+
+            this.autoPlay();
+            // Cosi' funziona ma va dritto senza fermarsi
+
         },
 
 

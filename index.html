@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-   <div class="container" id="root">
+    <div class="container" id="root">
         <div class="items">
             <!-- 
             <div class="item active">
@@ -20,7 +20,7 @@
             </div> 
             -->
 
-            <div class=" item active">
+            <div class=" item active" @mouseover="stopPlay()" @mouseleave="autoPlay()">
                 <img :src="items[active].url">
                 <div class="text">
                     <h3>{{items[active].name}}</h3>
@@ -38,12 +38,12 @@
             <div class="next" @click="nextPic()"></div>
 
              <!-- dico se il mio indice e' uguale ad active dai la classe active, altrimenti no -->
-            <div class="thumb" :class="indice ==active ? 'active' : '' " v-for="(item, indice) in items">
-                <img :src="item.url" alt="">
+            <div @mouseover="stopPlay()" @mouseleave="autoPlay()" class="thumb" @click="goToSlide(indice)":class="indice ==active ? 'active' : '' " v-for="(item, indice) in items">
+                <img :src="item.url" alt="">                
             </div>
 
         </div>
-   </div>
+    </div>
 
    <!-- Js & Vue Script -->
    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
